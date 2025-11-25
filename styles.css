@@ -1,0 +1,164 @@
+
+:root{
+  --bg: #0b0f14;
+  --card: rgba(255,255,255,0.08);
+  --card-border: rgba(255,255,255,0.12);
+  --text: #e6edf3;
+  --muted: #94a3b8;
+  --primary: #7c3aed; /* violet */
+  --primary-2: #a78bfa;
+  --success: #22c55e;
+  --danger: #ef4444;
+
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+  --blur: blur(12px);
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% 10%, #1f2937 10%, transparent 50%),
+    radial-gradient(800px 500px at 90% 20%, #111827 20%, transparent 60%),
+    var(--bg);
+}
+
+.app-header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:24px clamp(16px, 4vw, 48px);
+}
+h1{ margin:0; font-weight:700; letter-spacing:0.2px; }
+
+.header-actions{
+  display:flex; gap:12px; align-items:center;
+}
+#themeToggle{
+  width:40px; height:40px; border-radius:12px; border:1px solid var(--card-border);
+  background: var(--card);
+  backdrop-filter: var(--blur);
+  display:grid; place-items:center; cursor:pointer; color:var(--text);
+}
+#search{
+  width: clamp(160px, 30vw, 340px);
+  padding:10px 12px;
+  border-radius:12px; border:1px solid var(--card-border);
+  background: var(--card);
+  backdrop-filter: var(--blur);
+  color: var(--text);
+}
+
+.card{
+  margin: 0 auto;
+  max-width: 860px;
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  background: var(--card);
+  backdrop-filter: var(--blur);
+  box-shadow: var(--shadow);
+}
+
+.new-task{
+  display:grid;
+  grid-template-columns: 1fr 140px 100px;
+  gap: 10px;
+}
+.new-task input, .new-task select{
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  background: rgba(0,0,0,0.2);
+  color: var(--text);
+}
+button{
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  cursor:pointer;
+}
+button.primary{
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  border: none;
+}
+button.ghost{ background: transparent; border:1px dashed var(--card-border); }
+
+.toolbar{
+  margin-top: 18px; display:flex; justify-content:space-between; align-items:center;
+}
+.filters{ display:flex; gap:8px; }
+.filters button.active{
+  outline: 2px solid var(--primary-2);
+}
+
+.task-list{ list-style:none; margin: 18px 0 0; padding:0; }
+.task-item{
+  display:grid;
+  grid-template-columns: 36px 1fr auto;
+  align-items:center;
+  gap: 14px;
+  padding: 12px;
+  border-radius: 14px;
+  border:1px solid var(--card-border);
+  background: rgba(255,255,255,0.06);
+  margin-bottom: 10px;
+}
+.checkbox{ display:inline-flex; align-items:center; }
+.checkbox input{ display:none; }
+.checkmark{
+  width:22px; height:22px; border-radius:6px;
+  border:1.5px solid var(--muted);
+  display:inline-block;
+}
+.task-complete:checked + .checkmark{
+  background: var(--success);
+  border-color: var(--success);
+}
+
+.task-body{ display:flex; gap:8px; align-items:center; min-width:0; }
+.task-title{
+  flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.task-item.completed .task-title{
+  text-decoration: line-through; color: var(--muted);
+}
+
+.priority-pill{
+  border:1px solid var(--card-border);
+  padding: 2px 8px; border-radius:999px; font-size:12px; color: var(--muted);
+}
+.priority-pill.low{ color:#60a5fa; border-color:#60a5fa55; }
+.priority-pill.medium{ color:#f59e0b; border-color:#f59e0b55; }
+.priority-pill.high{ color:#ef4444; border-color:#ef444455; }
+
+.task-edit{
+  display:none; flex:1;
+  padding:8px 10px; border-radius:8px; border:1px solid var(--card-border);
+  background: rgba(0,0,0,0.2); color: var(--text);
+}
+.task-item.editing .task-title{ display:none; }
+.task-item.editing .task-edit{ display:block; }
+
+.task-actions{ display:flex; gap:8px; }
+.task-actions .save{ display:none; }
+.task-item.editing .edit{ display:none; }
+.task-item.editing .save{ display:inline-block; }
+
+.footer{
+  max-width:860px; margin: 18px auto; color: var(--muted);
+  padding: 0 24px;
+}
+
+/* Light theme */
+.light{
+  --bg: #f7f7f9;
+  --text: #0f172a;
+  --muted: #475569;
+  --card: rgba(255,255,255,0.8);
+  --card-border: rgba(15,23,42,0.08);
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}

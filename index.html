@@ -1,1 +1,77 @@
-<h1>Hey Buddyy !! </h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To‑Do List</title>
+
+  <!-- ✔ Proper stylesheet link -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Tasks</h1>
+    <div class="header-actions">
+      <button id="themeToggle" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3a9 9 0 0 0 0 18 9 9 0 0 1 0-18z"></path>
+        </svg>
+      </button>
+      <input id="search" type="search" placeholder="Search tasks…" aria-label="Search tasks" />
+    </div>
+  </header>
+
+  <main class="card">
+    <form id="newTaskForm" class="new-task">
+      <input id="taskInput" type="text" placeholder="What needs to be done?" aria-label="Task title" required />
+      <select id="priorityInput" aria-label="Priority">
+        <option value="low" selected>Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button type="submit" class="primary">Add</button>
+    </form>
+
+    <div class="toolbar">
+      <div class="filters" role="tablist" aria-label="Filter tasks">
+        <button data-filter="all" class="active" role="tab">All</button>
+        <button data-filter="active" role="tab">Active</button>
+        <button data-filter="completed" role="tab">Completed</button>
+      </div>
+      <button id="clearCompleted" class="ghost">Clear completed</button>
+    </div>
+
+    <ul id="taskList" class="task-list" aria-live="polite"></ul>
+  </main>
+
+  <footer class="footer">
+    <p>Tip: Press <kbd>N</kbd> to add a task, <kbd>Ctrl</kbd>+<kbd>Enter</kbd> to save edits.</p>
+    <p class="credits">Made with HTML • CSS • JS</p>
+  </footer>
+
+  <template id="taskTemplate">
+    <li class="task-item">
+      <label class="checkbox">
+        <input type="checkbox" class="task-complete" />
+        <span class="checkmark"></span>
+      </label>
+
+      <div class="task-body">
+        <span class="task-title"></span>
+        <span class="priority-pill"></span>
+        <input class="task-edit" type="text" aria-label="Edit task" />
+      </div>
+
+      <div class="task-actions">
+        <button class="edit" aria-label="Edit">Edit</button>
+        <button class="save" aria-label="Save">Save</button>
+        <button class="delete" aria-label="Delete">Delete</button>
+      </div>
+    </li>
+  </template>
+
+  <!-- ✔ Proper script tag; defer ensures DOM is ready before code runs -->
+  <script src="app.js" defer></script>
+</body>
+</html>
